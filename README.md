@@ -72,19 +72,19 @@ A full-featured backend API built with **Node.js** and **Express.js**, allowing 
 
 ## 📁 Folder Structure
 ├── public/
-  ├── temp/  // for temp image uploading
+│ └── temp/ # Temporary image uploads
 ├── src/
-  ├── controllers/
-  ├── models/
-  ├── routes/
-  ├── middleware/
-  ├── config/
-  ├── utils/
-  └── index.js
-├── .env
+│ ├── controllers/ # Route handler logic
+│ ├── models/ # Mongoose models and schema definitions
+│ ├── routes/ # Express route definitions
+│ ├── middleware/ # Custom middleware (e.g., auth, error handler)
+│ ├── config/ # Configuration files (e.g., DB connection)
+│ ├── utils/ # Utility functions (e.g., token helpers)
+│ └── index.js # Entry point of the application
+├── .env # Environment variables (e.g., DB URI, JWT secret)
 
 1. Clone the repo:
-   git clone https://github.com/yourusername/book-review-api.git
+   git clone https://github.com/nitindpatil15/book-review-api.git
    cd book-review-api
    
 Install dependencies:
@@ -104,7 +104,7 @@ Run the app:
   
 📬 API Testing
 Use Postman or any other API client to test endpoints. Ensure to set the Authorization header when accessing protected routes.
-
+API Documentation : https://documenter.getpostman.com/view/34119485/2sB2x2HtXC
 
 🙋‍♂️ Author
 Nitin Dagadu Patil
