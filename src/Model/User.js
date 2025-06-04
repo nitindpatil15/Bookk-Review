@@ -36,7 +36,6 @@ const userSchema = new Schema(
   { timestamps: true }
 );
 
-// Middleware for password hashing
 userSchema.pre("save", async function (next) {
   if (this.isModified("password")) {
     this.password = await bcrypt.hash(this.password, 10);
@@ -44,12 +43,10 @@ userSchema.pre("save", async function (next) {
   next();
 });
 
-// Method to verify password
 userSchema.methods.isPasswordCorrect = async function (password) {
   return await bcrypt.compare(password, this.password);
 };
 
-// Method to generate access token
 userSchema.methods.generateAccessToken = function () {
   const payload = {
     _id: this._id,
@@ -57,8 +54,7 @@ userSchema.methods.generateAccessToken = function () {
     name: this.name,
     role: this.role,
   };
-  return jwt.sign(payload, process.env.ACCESSTOKEN_SECRET_KEY, { expiresIn: "60m" });
+  return jwt.sign(payload, process.env.ACCESSTOKEN_SECRET_KEY, { expiresIn: "120m" });
 };
-
 
 export const User = mongoose.model("User", userSchema);

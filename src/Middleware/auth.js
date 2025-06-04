@@ -10,7 +10,9 @@ const authentication = async (req, res, next) => {
     if (!token) {
       return next( new Error("Unauthorized User"))
     }
+    console.log("Token",token)
     const decodedUser = jwt.verify(token, process.env.ACCESSTOKEN_SECRET_KEY);
+    console.log("Decoded user: ",decodedUser)
     if (!decodedUser) {
       return next( new Error("Invalid Token"));
     }
@@ -18,10 +20,12 @@ const authentication = async (req, res, next) => {
     const selectUser = await User.findById(decodedUser?._id).select(
       "-password"
     );
+    console.log("selectUser: ",selectUser)
     if (!selectUser) {
       return next(new Error("User Not Found"))
     }
     req.user = selectUser;
+    console.log(req.user)
     console.log("Authorized User", selectUser);
     next();
   } catch (error) {
